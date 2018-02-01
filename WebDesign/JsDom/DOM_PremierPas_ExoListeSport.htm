@@ -1,0 +1,59 @@
+
+<!-- saved from url=(0076)http://formation.anjousoft.fr/ESAIP/Master/DOM_PremierPas_ExoListeSport.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+</head> 
+
+<script type="text/javascript">
+	function add() {
+		var input = document.querySelector('#sportSaisie');
+		//alert(input.value);
+		var ul = document.querySelector('#listSportPrefere');
+		ul.innerHTML=ul.innerHTML + '<li>'+input.value + '<button onclick="del(this)">Delete me!</button>'+'</li>';
+		//因为<li>是一个字符串，所以要放进单引号里面。
+		input.value='';
+
+		
+	}
+
+	function del(button){
+				//document.getElementById('#listSportPrefere').pare = null;
+  		button.parentElement.remove();
+
+
+	};
+
+	</script>
+<body>
+
+
+	
+	<div>Please enter a sport to add : 
+	<input type="text" id="sportSaisie" >
+	<!--<button onclick='' >add this sport</button>-->
+	<input type="button" onclick="add()" value="Add">
+    
+    <br>add in : 
+	<label for="ckSportPrefere">best sports</label>
+	<input checked="\&quot;checked\&quot;" type="radio" id="ckSportPrefere" name="choixListeSport" value="sportPrefere">
+
+
+
+	
+	<label for="ckSportMoinsAime">worst sport: </label>
+	<input type="radio" id="ckSportMoinsAime" name="choixListeSport" value="sportMoinsAimé">
+</div>
+
+<div style="display:-webkit-flex;">
+	<div style="background-color:#92D050;padding:10px;margin:10px;">
+		Best sport list
+		<ul id="listSportPrefere">
+		</ul>
+	</div>
+	<div style="background-color:#4370A8;padding:10px;margin:10px;">
+		Worst sport list
+		<ul id="listSportMoinsAime"></ul>
+	</div>
+</div>
+
+</body></html>
