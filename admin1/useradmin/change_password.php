@@ -43,11 +43,11 @@ if (isset($_GET['edit'])) {
     <!-- end: Header Menu Team logo -->
     <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
         <?php $row = mysqli_fetch_array($results) ?>
+        <li><a href="show-user.php">User Management</a></li>
         <li><a href="create_admin.php">Add Admin</a></li>
         <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit Profile</a></li>
         <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
         <li><a href="edit-condition.php">Privacy&Terms</a></li>
-        <li><a href="show-user.php">User Management</a></li>
         <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
         <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
         <div>

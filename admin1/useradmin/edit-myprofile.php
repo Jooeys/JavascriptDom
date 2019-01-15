@@ -7,8 +7,8 @@ include('server.php');
 
 		if (count($record == 1)) {
 			$n = mysqli_fetch_array($record);
-			$firstname = $n['firstname'];
-			$lastname = $n['lastname'];
+			$firstname = $n['first_name'];
+			$lastname = $n['last_name'];
 			$email = $n['email'];
 			$password = $n['password'];
 			$address = $n['address'];
@@ -41,18 +41,19 @@ include('server.php');
     <!-- end: Header Menu Team logo -->
     <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
         <?php $row = mysqli_fetch_array($results) ?>
+        <li><a href="show-user.php">User Management</a></li>
         <li><a href="create_admin.php">Add Admin</a></li>
         <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit Profile</a></li>
         <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
         <li><a href="edit-condition.php">Privacy&Terms</a></li>
-        <li><a href="show-user.php">User Management</a></li>
+        
         <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
         <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
         <div>
             <?php  if (isset($_SESSION['user'])) : ?>
-                <strong><?php echo $_SESSION['user']['username']; ?></strong>
+                <strong><?php echo $_SESSION['user']['email']; ?></strong>
                 <small>
-                    <i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
+                    <i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['type']); ?>)</i>
                     <br>
                     <a href="../admin/home.php?logout='1'" style="color: red;">logout</a>&nbsp;&nbsp;
                     <a href="../admin/create_user.php"> login</a>
@@ -98,11 +99,11 @@ include('server.php');
 	<input type="hidden" name="id" value="<?php echo $id; ?>">
 	<div class="input-group">
 		<label>First Name</label>
-		<input type="text" name="firstname" value="<?php echo $firstname; ?>">
+		<input type="text" name="first_name" value="<?php echo $first_name; ?>">
 	</div>
 	<div class="input-group">
 		<label>Last Name</label>
-		<input type="text" name="lastname" value="<?php echo $lastname; ?>">
+		<input type="text" name="last_name" value="<?php echo $last_name; ?>">
 	</div>
 	<div class="input-group">
 		<label>Email</label>
@@ -118,7 +119,7 @@ include('server.php');
 	</div>
 	<div class="input-group">
 		<label>UserType</label>
-		<input type="text" name="usertype" value="<?php echo $usertype; ?>">
+		<input type="text" name="type" value="<?php echo $type; ?>">
 	</div>
 	<div class="input-group">
 

@@ -18,10 +18,9 @@ if (isset($_GET['edit'])) {
 }
 ?> -->
 <?php 
-    $title = "";
-    $body = "";
-    $update_post = false;
-    $save_post = false;
+    $terms_text = "";
+    $update_terms = false;
+    $save_terms = false;
 ?>
  <?php error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
 
@@ -53,11 +52,12 @@ if (isset($_GET['edit'])) {
     <!-- end: Header Menu Team logo -->
     <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
         <?php $row = mysqli_fetch_array($results) ?>
-        <li><a href="create_admin.php">Add Admin</a></li>
-        <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit Profile</a></li>
-        <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
-        <li><a href="edit-condition.php">Privacy&Terms</a></li>
         <li><a href="show-user.php">User Management</a></li>
+        <li><a href="create_admin.php">Add Admin</a></li>
+        <li><a href="edit-myprofile.php" >Edit Profile</a></li>
+        <li><a href="edit-faq.php" >Edit FAQ</a></li>
+        <li><a href="edit-condition.php">Privacy&Terms</a></li>
+        
         <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
         <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
         <div>
@@ -91,18 +91,16 @@ if (isset($_GET['edit'])) {
         <!-- Middle form - to create and edit FAQ  -->
         <div class="action create-post-div">
             <h1 class="page-title" style="text-align: center;">Edit Privacy & Terms</h1>
-            <form method="post" enctype="multipart/form-data" action="show-condition.php" style="border: 1px solid green;" >
-
-                <input type="text" name="title" value="<?php echo $title; ?>" placeholder="Title" style="width: 596px;height: 50px;border: 1px solid green;"> &nbsp;
-                <textarea name="body" id="body" cols="60" rows="30"><?php echo $body; ?></textarea>
+            <form method="post" enctype="multipart/form-data" action="server.php" style="border: 1px solid green;" >
+                <textarea name="terms_text" id="body" cols="60" rows="30"><?php echo $terms_text; ?></textarea>
             
                 <div class="input-group">
 
                 <!-- if editing post, display the update button instead of create button -->
-                <?php if ($update_post == true): ?> 
-                    <button type="submit" class="btn" name="update_post">UPDATE</button>
+                <?php if ($update_terms == true): ?> 
+                    <button type="submit" class="btn" name="update_terms">UPDATE</button>
                 <?php else: ?>
-                    <button type="submit" class="btn" name="create_post">Save Post</button>
+                    <button type="submit" class="btn" name="create_terms">Save Post</button>
                 <?php endif ?>
             </div>
             </form>

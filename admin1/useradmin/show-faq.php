@@ -19,7 +19,17 @@
 			<header>
 				<h2>Frequently asked questions (FAQ)<h2>		
 			</header>
+
 			<div id="terms">
+				<!-- when user manipulate database show messages here -->
+				<?php if (isset($_SESSION['message'])): ?>
+					<div class="msg">
+						<?php 
+							echo $_SESSION['message']; 
+							unset($_SESSION['message']);
+						?>
+					</div>
+				<?php endif ?>
 				<?php
 
 					session_start();
@@ -33,13 +43,12 @@
 					{	
 						while($row = mysqli_fetch_assoc($query_run))
 						{
-							$id = $row['id'];
-							$title = $row['title'];
-							$body = $row['body'];
+							// $id = $row['id'];
+							$faq_text = $row['faq_text'];
 
-							echo "<div class='tnc'><p class='display'>$id</p></div>";
-							echo "<div class='tnc'><p class='display'>$title</p></div>";
-							echo "<div class='tnc'><p class='display'>$body</p></div>";
+							// echo "<div class='tnc'><p class='display'>$id</p></div>";
+							echo "<div class='tnc'><p class='display'>$faq_text</p></div>";
+							
 						}
 					}
 					else

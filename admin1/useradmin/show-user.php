@@ -3,16 +3,16 @@ include('server.php');
 	if (isset($_GET['edit'])) {
 		$id = $_GET['edit'];
 		$update = true;
-		$record = mysqli_query($db, "SELECT * FROM info WHERE id=$id");
+		$record = mysqli_query($db, "SELECT * FROM users WHERE id=$id");
 
 		if (count($record == 1)) {
 			$n = mysqli_fetch_array($record);
-			$firstname = $n['firstname'];
-			$lastname = $n['lastname'];
+			$first_name = $n['first_name'];
+			$last_name = $n['last_name'];
 			$email = $n['email'];
 			$password = $n['password'];
-			$address = $n['address'];
-			$usertype = $n['usertype'];
+			// $address = $n['address'];
+			$type = $n['type'];
 		}
 
 	}
@@ -44,11 +44,11 @@ include('server.php');
     <!-- end: Header Menu Team logo -->
     <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
         <?php $row = mysqli_fetch_array($results) ?>
+        <li><a href="show-user.php">User Management</a></li>
         <li><a href="create_admin.php">Add Admin</a></li>
         <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit Profile</a></li>
         <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
-        <li><a href="edit-condition.php">Privacy&Terms</a></li>
-        <li><a href="show-user.php">User Management</a></li>
+        <li><a href="Privacy&Terms.php">Privacy&Terms</a></li>
         <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
         <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
         <div>
@@ -87,7 +87,7 @@ include('server.php');
 
 <!--Search box for admin users-->
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search FirstName..."style="margin-top: 20px;margin-bottom: auto;">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search first_name..."style="margin-top: 20px;margin-bottom: auto;">
 <!-- when user manipulate database show messages here -->
 	<?php if (isset($_SESSION['message'])): ?>
 		<div class="msg">
@@ -103,29 +103,29 @@ include('server.php');
 
 <!--end: pagination script -->
 
-<?php $results = mysqli_query($db, "SELECT * FROM info order by id desc"); ?>
+<?php $results = mysqli_query($db, "SELECT * FROM users order by id desc"); ?>
 
 <table id="myTable"> 
     <tr class="header">   
       <th>ID</th>
-      <th>FirstName</th>
-      <th>LastName</th>
+      <th>first_name</th>
+      <th>last_name</th>
       <th>Email</th>
-      <th>Password</th>
-      <th>Address</th>
-      <th>UserType</th>
+      <!-- <th>Password</th> -->
+      <!-- <th>Address</th> -->
+      <th>Type</th>
       <th colspan="5">Action</th>
     </tr>
 
 	<?php while ($row = mysqli_fetch_array($results)) { ?>
 	<tr>
 		<td><?php echo $row['id']; ?></td>
-		<td><?php echo $row['firstname']; ?></td>
-		<td><?php echo $row['lastname']; ?></td>
+		<td><?php echo $row['first_name']; ?></td>
+		<td><?php echo $row['last_name']; ?></td>
 		<td><?php echo $row['email']; ?></td>
-		<td><?php echo $row['password']; ?></td> 
-		<td><?php echo $row['address']; ?></td>
-		<td><?php echo $row['usertype']; ?></td>
+		<!-- <td><?php echo $row['password']; ?></td>  -->
+		<!-- <td><?php echo $row['address']; ?></td> -->
+		<td><?php echo $row['type']; ?></td>
 		<td><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" class="edit_btn">Edit</a></td>
 		<td><a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn">Delete</a></td>
 	</tr>
