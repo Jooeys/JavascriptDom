@@ -1,0 +1,17 @@
+body,html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+.bg-image{
+    background-image: url(imgs/spl1.jpg);
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    height: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

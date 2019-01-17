@@ -1,0 +1,671 @@
+ /* HTML tag and some common CSSs */
+ body,
+ html {
+     /* font-family: Arial, Helvetica, sans-serif; */
+     height: 100%;
+     margin: 0;
+     font: 400 16px/18px 'Lato',arial,helvetica,sans-serif;
+ }
+ body {
+    background-image: url(home_db.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* opacity: 0.5; */
+    /* filter: blur(5px);
+    -webkit-filter: blur(5px); */
+    height: 100%;
+    
+}
+ * {
+     box-sizing: border-box;
+ }
+ ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 10px;
+     overflow: hidden;
+     float: right;
+ }
+ li {
+     float: left;
+ }
+ li a, .dropbtn {
+     display: inline-block;
+     color: white;
+     text-align: center;
+     padding: 14px 5px;
+     text-decoration: none;
+     border: none;
+ }
+ li.dropdown {
+     display: inline-block;
+ }
+ button {
+     background: transparent;
+     border: none;
+     font-size: 16px;
+     width: 75%;
+     height: 30px;
+     color: #ffffff;
+     /* font-size: 24px;
+     border: 0.5px solid #f1f1f1; */
+ }
+ h2 {
+     font-size: 48px;
+     text-align: center;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+ }
+ h3{
+     font-size: 26px;
+ }
+ p{
+     font-size: 18px;
+ }
+ /* Top navbar,Logo,Dropdown CSS */
+ .header {
+     width: 100%;
+     overflow: hidden;
+     background: rgb(0, 0, 0);
+     position: fixed;
+     z-index: 1;
+ }
+ .logo {
+     float: left;
+     padding: 10px;
+ }
+ .dropdown-content {
+     display: none;
+     position: absolute;
+     background-color: rgb(220, 220, 220);
+     min-width: 160px;
+     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+     z-index: 1;
+ }
+ .dropdown-content a {
+     color: black;
+     padding: 12px 16px;
+     text-decoration: none;
+     display: block;
+     text-align: left;
+ }
+ .dropdown-content a:hover {
+     background-color: #f1f1f1
+ }
+ .dropdown:hover .dropdown-content {
+     display: block;
+ }
+ 
+ /* Side Nav-Bar tab and links CSS */
+ .sidenav {
+    height: 200px;
+    width: 235px;
+    background-color: #646464;
+    overflow-x: hidden;
+    transition: 0.5s;
+    /* padding-top: 60px; */
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+ /* .sidenav {
+     height: 200px;
+     width: 165px;
+     background-color: #3A3A3A;
+     overflow-x: hidden;
+ }
+ .sidenav a {
+     padding: 14px 12px 6px 16px;
+     text-decoration: none;
+     font-size: 18px;
+     font-weight: bold;
+     color: #B0E0E6;
+     display: block;
+     border: none;
+     border-bottom: 0.5px solid #f2f2f4;
+     background: none;
+     width: 100%;
+     height: 50px;
+     text-align: left;
+     cursor: pointer;
+     outline: none;
+ }
+ .sidenav a:hover {
+     background-color: #f1f1f1;
+     color: #3A3A3A;
+ } */
+ .home_link,.contact_link,.faq_link,.dashboard_link,.support_link{
+     color: white;
+     font-size: 18px;
+     padding: 10px;
+     display: block;
+ }
+
+ 
+ /* Main content CSS */
+ .main {
+     /* margin-left: 2%; */
+     font-size: 16px;
+     padding: 0px 10px;
+     width: 100%;
+     overflow: hidden;
+     padding-top: 20px;
+     /* z-index: 1;
+     position: absolute;
+     top: 0; */
+ }
+ 
+ /* Breadcrumb navigation tab  CSS on top */
+ .breadcrumb{
+     margin: 0px;
+     background: #eee;
+     color: black;
+     width: 98%;
+     height: 38px;
+     padding: 0px 0px 0px 0px;
+     text-align: left;
+     float: left;
+ }
+ .breadcrumb a {
+     background: #eee;
+     color: black;
+     width: 100%;
+     height: 50px;
+     padding: 5px 0px 0px 15px;
+     font-size: 16px;
+     text-align: left;
+ }
+ .breadcrumb a:hover{
+     width: 100%;
+     color: #646464;
+     background-color: none;
+     text-shadow: 0px 1px 1px #fff;
+     text-decoration: none;
+ }
+
+ /* Center content CSS - common */
+ .center-part{
+     /* position: fixed;
+     top:17%;
+     z-index: 0; */
+     /* overflow: hidden; */
+     padding-top: 20px;
+ }
+ .welcome-user{
+    color: lightgray;
+    margin-left: 10px;
+    font-size: 22px;
+    padding-top: 10px;
+ }
+
+
+ /* Home and support content common CSS */
+ #home-content,#support-content,#faq-content,#profile-content{
+    /* width: 85%; */
+    /* margin: 0px;  */
+    margin-top: 60px;
+ }
+
+ /*Profile Content by Junyi*/
+ #profile-form, .content {
+    width: 100%;
+    margin: 23px auto;
+    padding: 10px;
+    border: 1px solid #B0C4DE;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+}
+.input-group {
+    margin: 10px 0px 10px 0px;
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+    /* color: #f1f1f1;s */
+}
+.input-group input {
+    height: 30px;
+    width: 93%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.submitbutton{
+    width:250px;
+    float: left;
+
+}
+.btn {
+    background-color: black;
+    width: 60px;
+    float: inherit;
+    display: inline-block;
+    padding: 1px;
+    font-size: 15px;
+    color: white;
+    margin: 5px;
+    /* border: solid 2px green; */
+    border-radius: 5px;
+}
+
+/* FAQ block CSS */
+.faq-block{
+    padding: 20px;
+    border: 1px solid;
+    background-color: #d7dde5;
+}
+
+
+ /* Support Content CSS */
+ .support-title{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top: 30px;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    color: lightgray;
+    font-family: sans-serif;
+ }
+ .support-title h2{
+     /* padding-top: 25px; */
+     margin-bottom: 20px;
+ }
+ .support-form input{
+     border-bottom: 2px solid #000000;
+     padding: 5px;
+     height: 30px;
+     outline: none;
+     /*border: 1px solid black;*/
+ }
+
+ /* Support form and add home, room, sensor form CSS - common */
+ form{
+     margin: 0px;
+     /* padding: 30px; */
+     float: left;
+     transition: all 3s ease-in-out;
+     /*border: 2px solid green;*/
+ }
+ .form-control{
+     width: 700px;
+     height: 180px;
+     outline: none;
+     border-bottom: 2px solid #000000;
+     font-size: 14px;
+     margin-bottom: 16px;      
+ }
+ form .submit{
+     background: #388dff;
+     border-color: transparent;
+     font-size: 18px;
+     /*font-weight: bold;*/
+     letter-spacing: 2px;
+     height: 30px;
+     margin-top: 20px;
+ }
+ form .submit:hover{
+     background-color: #d7dde5;
+     cursor: pointer;
+ }
+ .input-field{
+     /* padding: 10px;*/
+     text-align: left;
+     margin: 20px;
+     margin-left: 30px;
+ }
+ .input-field input{
+     width: 95%;
+     height: 35px;
+ }
+
+ /* Adding modal css */
+ .add-home-modal,.add-room-modal,.add-sensor-modal{
+     display: none; /* Hidden by default */
+     position: fixed; /* Stay in place */
+     z-index: 2; /* Sit on top */
+     left: 0;
+     top: 0;
+     width: 100%; /* Full width */
+     height: 100%; /* Full height */
+     overflow: auto; /* Enable scroll if needed */
+     background-color: rgb(0,0,0); /* Fallback color */
+     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+     padding-top: 60px;
+ }
+ .add-modal-content {
+     background-color: #fefefe;
+     margin: 5% auto 15% 35%;
+     padding-top: 30px;
+     border: 1px solid #888;
+     width: 30%;
+     height: 50%;
+ }
+ .modal-title{
+     text-align: center;
+     font-size: 24px;
+     /* font-weight: bold; */
+ }
+ .add-btn{
+     margin-top: 20px;
+     background-color: rgb(1, 83, 143);
+     border: 0px; 
+     margin-left: 10%;
+     font-size: 1.3em;
+ }
+ .close {
+     color: black;
+     float: right;
+     font-size: 34px;
+     font-weight: bold;
+     position: absolute;
+     top: 22%;
+     right: 36%;  
+ }
+ .add-room-img, .add-sensor-img{
+     padding: 25px;
+     margin-left: 20px;
+     width: 30%;
+ }
+
+ /* .tempHomeBlock, .tempRoomBlock, .tempSensorBlock, .homeBlock, .roomBlock, .sensorBlock, {
+    display: none;
+} */
+
+ /*Home,room,sensor add and display block CSS -common*/
+ .addHomeBlock, .addRoomBlock, .addSensorBlock{
+     width: 95%; 
+     float: left;
+     margin: 0 20px 10px 20px;
+     height: 280px;
+     /* overflow-y: scroll; */
+     /* position: relative; */
+ }
+ .add-home-temp{
+    float: left;
+    min-width: 20%;
+    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* margin-top: 5px; */
+    height: 200px;
+    display: inline-flex;
+ }
+ .iconLeftSide{
+     display: none;
+ }
+ .custom_block span, .custom_block a{
+     display: block;
+     margin: 0 auto 4px;
+     font-weight: bold;
+     margin-top: 20px;
+     text-align: center;
+     letter-spacing: -.34px;
+     color: rgb(40, 40, 40);
+     text-decoration: none;
+ }
+ .thumbnail, .thumbnail-aftr-home{
+     width: 100%;
+     height: 230px;
+     min-height: 280px;
+     margin-bottom: 0;
+     padding: 0;
+     display: block;
+     margin-bottom: 20px;
+     line-height: 1.42857143;
+     background-color: rgb(255,255,255);
+     background-color: rgba(255,255,255,0.5);
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     transition: border .2s ease-in-out;
+     overflow-y: scroll;  
+     overflow-x: hidden;
+ }
+ .thumbnail-aftr-home{
+     min-height: 230px;
+ }
+ .thumbnail-placeholder{
+    background-image: url(add-home1.png) !important;
+    background-size: 100% 100%;
+    width: 210px;
+    height: 180px;
+    margin: auto;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+ }
+ .thumbnail-room{
+     background-image: url(LR1.jpg) !important;
+     background-size: 100% 100%;
+     margin-left: 10px;
+     width: 200px;
+     height: 180px;
+     margin: auto;
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+ }
+ .thumbnail-sensor{
+    background-image: url(sensor-img.png) !important;
+    background-size: 100% 100%;
+    margin-left: 10px;
+    width: 200px;
+     height: 180px;
+     margin: auto;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+ .thumbnail .caption{
+     padding: 20px 15px;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     /* position: relative; */
+     /* margin-bottom: 20px; */
+     height: 37px;
+ }
+ .thumbnail-placeholder div, .thumbnail-room div {
+     /* position: absolute; */
+     width: 320px;
+     height: 180px;
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+ }
+ .add-home, .add-room, .add-sensor{
+     /* background-image: url(add-home.png);
+     background-position: 0px 0px; */
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+ }
+
+ .addHomeHeading{
+    margin: 2px;
+    padding: 10px;
+    width: 100%;
+    padding-left: 25px;
+    height: 45px;
+    position: relative;
+    z-index: 0;
+    background: skyblue;
+    font-weight: bold;
+    font-size: 20px;
+ }
+ .addHomeButton a{
+    text-decoration: none;
+ }
+
+ .addHomeButton span{
+    /* width: 100px;
+    height: 70px; */
+    display: inline;
+    /* padding: 10px; */
+ }
+ .addHomeButton{
+    padding: 10px;
+    float: right;
+    width: 206px;
+    height: 65px;
+    margin: 10px;
+    margin-right: 40px;
+    background-color: white;
+    /* opacity: 0.3; */
+    border-radius: 5px;
+    border: 1px solid;
+ }
+ .sensor-display{
+    width: 210px;
+    height: 80px;
+    margin:10px; 
+    display: inline-flex; 
+    border: 0.5px; 
+    background: darkgrey;
+ }
+
+ .switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    padding: 25px;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    width: 52px;
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+ /* .nav-tabs {
+     border-bottom: none;
+ } */
+ /* .sidebar_items{
+     padding-left: 0;
+     margin-bottom: 0;
+     list-style: none;
+     color: white;
+ } */
+ /* .dropdown-container {
+     display: none;
+     background-color: #262626;
+     padding-left: 8px;
+ } */
+ /* .bullet {
+     padding: 10px;
+ } */
+ /* .faqText
+ {
+     height : 100px;
+     width: 100px;
+     border: 1px solid;
+     overflow: hidden;
+ } */
+ /* .top-navbar {
+     width: 32%;
+     height: 65%;
+     position: absolute;
+     top: 30%;
+     left: 65%;
+ } */
+ /* #sidebar-left {
+     background: #3A3A3A;
+     margin-left: 0px !important;
+     position: absolute;
+     height: 100%;
+     width: 15%;
+ } */
+ /* .active {
+     background-color: rgba(222, 108, 48, 0.5);
+     color: white;
+ } */
+
+ /* Background image CSS */
+ /* .bg-img{
+    background-image: url(home_db.jpg);
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+    /* position: relative;
+    z-index: -1; 
+    top: -2%; */
+ /* } */
+
+ 

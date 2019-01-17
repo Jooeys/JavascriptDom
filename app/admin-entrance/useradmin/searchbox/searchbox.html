@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="function.js"></script>
+</head>
+<body>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+ 
+<!--  
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">名称</th>
+    <th style="width:40%;">城市</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbkop</td>
+    <td>Sweden</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Koniglich Essen</td>
+    <td>Germany</td>
+  </tr>
+</table> -->
+
+
+<?php if (isset($_SESSION['message'])): ?>
+    <div class="msg">
+      <?php 
+        echo $_SESSION['message']; 
+        unset($_SESSION['message']);
+      ?>
+    </div>
+  <?php endif ?>
+
+<?php $results = mysqli_query($db, "SELECT * FROM info"); ?>
+
+<table id="myTable">
+  <!-- <thead> -->
+    <tr class="header">   
+      <th>ID</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Address</th>
+      <th>UserType</th>
+      <th colspan="5">Action</th>
+    </tr>
+  <!-- </thead> -->
+  
+  <?php while ($row = mysqli_fetch_array($results)) { ?>
+  
+
+    <tr>
+      <td><?php echo $row['id']; ?></td>
+      <td><?php echo $row['firstname']; ?></td>
+      <td><?php echo $row['lastname']; ?></td>
+      <td><?php echo $row['email']; ?></td>
+      <td><?php echo $row['password']; ?></td> 
+      <td><?php echo $row['address']; ?></td>
+      <td><?php echo $row['usertype']; ?></td>
+      <td>
+        <a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" class="edit_btn">Edit</a>
+      </td>
+      <td>
+        <a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn">Delete</a>
+      </td>
+    </tr>
+  <?php } ?>
+</table>
+
+
+</body>

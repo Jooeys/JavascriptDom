@@ -1,0 +1,50 @@
+body,html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+*{
+    box-sizing: border-box;
+	padding : 0px;
+	margin: 0px;
+	
+}
+/*
+.bg-image{
+    background-image: url(imgs/spl1.jpg);
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+   
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+	 height: 100%;
+}*/
+
+#container {
+	width : 1000px;
+	height: 1000px;
+	background-color: gray;
+	margin-left : auto;
+	margin-right: auto;
+	margin-top : 0px;
+}
+
+#header header{
+	width : 100%;
+	height: 60px;
+	color : #fff;
+	background-color: #000000;
+}
+
+#header header h2{
+	line-height: 60px;
+	padding-left: 350px;
+}
+
+#terms {
+	width: 100%;
+	height: auto;
+	padding: 30px;
+	
+}
