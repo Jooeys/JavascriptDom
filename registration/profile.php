@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Registration system PHP and MySQL</title>
+	<title>ProfilesL</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<div class="header">
-		<h2>Register</h2>
+		<h2>Profile</h2>
 	</div>
 	
-	<form method="post" action="register.php">
+	<form method="post" action="profile.php">
 
 		<?php include('errors.php'); ?>
 
