@@ -54,7 +54,7 @@
                 <li><a href="../useradmin/show-user.php">User tables</a></li>
                 <li><a href="../useradmin/admin-table.php">Admin tables</a></li>
                 <li><a href="../useradmin/change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
-                <img src="../images/boss.png"  >
+                <li><img src="../images/boss.png" style="margin:0px 0px 0px 280px;"></li>
                 <div style="margin: 20px 20px;">
             <?php  if (isset($_SESSION['user'])) : ?>
                 <strong style="font-size: x-large;"><?php echo $_SESSION['user']['username']; ?></strong>

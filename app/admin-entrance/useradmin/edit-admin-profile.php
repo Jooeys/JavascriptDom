@@ -1,22 +1,18 @@
-<!-- <?php 
+<?php 
 include('server.php');
 	if (isset($_GET['edit'])) {
 		$id = $_GET['edit'];
 		$update = true;
-		$record = mysqli_query($db, "SELECT * FROM info WHERE id=$id");
 
-		if (count($record == 1)) {
-			$n = mysqli_fetch_array($record);
-			$firstname = $n['first_name'];
-			$lastname = $n['last_name'];
-			$email = $n['email'];
-			$password = $n['password'];
-			$address = $n['address'];
-			$usertype = $n['usertype'];
-		}
-
+		$results = mysqli_query($db, "SELECT * FROM users WHERE id=$id");
+		$n = mysqli_fetch_array($results);
+		$first_name = $n['first_name'];
+		$last_name = $n['last_name'];
+		$email = $n['email'];
+		$password = $n['password'];
+		$type = $n['type'];
 	}
-?>  -->
+?>  
 <?php error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
 <!DOCTYPE html>
 <html>
@@ -39,27 +35,24 @@ include('server.php');
         <span style="float:left;color:white;padding:20px 20px;position:relative;font-family: Arial;font-size: 24px;margin-top: 10px;">ADMIN-DOMISEP</span>
     </div>
     <!-- end: Header Menu Team logo -->
-    <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
+    <ul class="top-nav" style="width: 75%;float: left;display: inline-block;">
         <?php $row = mysqli_fetch_array($results) ?>
         <li><a href="show-user.php">User Management</a></li>
         <li><a href="create_admin.php">Add Admin</a></li>
-        <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit User Profile</a></li>
         <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
         <li><a href="edit-condition.php">Privacy&Terms</a></li>
-        
-        <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
-        <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
-        <div style="margin: 20px 20px;">
-            <?php  if (isset($_SESSION['user'])) : ?>
-                <strong style="font-size: x-large;"><?php echo $_SESSION['user']['username']; ?></strong>
+        <li><img src="../images/boss.png" style="margin:0px 0px 0px 280px;"></li>
+        <div style="margin: 2px 2px;">
+            <?php  if (isset($_SESSION['first_name'])) : ?>
+                <strong style="font-size: x-large;"><?php echo $_SESSION['first_name']; ?></strong>
                 <small>
-                    <i  style="color: #888;margin-right: 20px;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                    
-                    <a href="../../index.php?logout='1'" style="color: red;font-size: x-large;">logout</a>
+                    <i  style="color: #888;margin-right: 1px;">(<?php echo ucfirst($_SESSION['type']); ?>)</i>
+                    <button class="logout_btn"><a href="../../index.php?logout='1'" style="text-decoration: none;">logout</a></button>
                  
                 </small>
 
             <?php endif ?>
+        </div>
         </div>
         <?php ?>
     </ul>
@@ -77,7 +70,7 @@ include('server.php');
 			</div>
 		<?php endif ?>
 
-		<!-- logged in user information -->
+		<!-- user information -->
 		<div class="profile_info" style="margin: -20px;">
         </div>
 	<?php if (isset($_SESSION['message'])): ?>
@@ -89,14 +82,16 @@ include('server.php');
 		</div>
 	<?php endif ?>
 
-<?php $results = mysqli_query($db, "SELECT * FROM info"); ?>
+<?php $results = mysqli_query($db, "SELECT * FROM users"); ?>
 
-	
-
-<h2 style="text-align: center;margin-top: 40px;">Edit Admin Profile</h2>
+<h2 style="text-align: center;margin-top: 40px;">Edit Admin/User Profile</h2>
 <form method="post" action="server.php" style="background-color: darkgrey;">
 
-	<input type="hidden" name="id" value="<?php echo $id; ?>">
+	<!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
+	<div class="input-group">
+		<label>ID</label>
+		<input type="text" name="id" value="<?php echo $id; ?>">
+	</div>
 	<div class="input-group">
 		<label>First Name</label>
 		<input type="text" name="first_name" value="<?php echo $first_name; ?>">
@@ -113,16 +108,24 @@ include('server.php');
 		<label>UserType</label>
 		<input type="text" name="type" value="<?php echo $type; ?>">
 	</div>
+	<!-- <div class="input-group">
+			<label>User type</label>
+			<select name="user_type" id="user_type" >	
+				<option value="admin">Admin</option>
+				<option value="user">User</option> 
+			</select>
+	</div> -->
 	<div class="input-group">
 		<label>New Password</label>
-		<input type="password" name="new_password" autocomplete="off" required/>
+		<input type="password" placeholder="" name="password">
 	</div>
 	<div class="input-group">
 		<label>Confirm Password</label>
-		<input type="password" name="confirm_password" autocomplete="off" required/>
+		<input type="password" placeholder="" name="con_pswd">
 	</div>
+	<!-- changing password for  admin and user , did them the same as sybmit_btn?-->
+	<!-- <?php //include('../password_update_by_admin.php'); ?> -->
 	<div class="input-group">
-
 		<?php if ($update == true): ?>
 			<button class="btn" type="submit" name="update" style="background: #556B2F;" >update</button>
 		<?php else: ?>

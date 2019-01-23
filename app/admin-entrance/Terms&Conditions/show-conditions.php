@@ -33,8 +33,8 @@
 					{	
 						while($row = mysqli_fetch_assoc($query_run))
 						{
-							$term = $row['value'];
-							echo "<div class='tnc'><p class='display'>$term</p></div>";
+							$terms_text = $row['terms_text'];
+							echo "<div class='tnc'><p class='display'>$terms_text</p></div>";
 						}
 					}
 					else

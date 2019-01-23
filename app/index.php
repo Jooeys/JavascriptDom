@@ -75,6 +75,7 @@ if(isset($_POST['submit_btn']))
 					echo '<script type = "text/javascript"> alert("Registration successful. Please login to use the website.") </script>';
 					//$_SESSION['message'] = "Registration successful";
 					$_SESSION['first_name'] = $first_name;
+					
 					header("location: index.php");
 				}
 			}
@@ -122,6 +123,9 @@ if(isset($_POST['submit_btn']))
 						$navigate = mysqli_fetch_array($connect);
 						if($navigate['type'] == 'User')
 						{
+							//use session to save first_name and type then we could get form here.
+							$_SESSION['first_name'] = $navigate['first_name'];
+							$_SESSION['type']= $navigate['type'];
 							//Navigating to user page
 							//echo '<script type = "text/javascript"> alert("Welcome!") </script>'; //User_home/user-dashboard.html
 							header('location: user-entrance/user-dashboard.php'); //redirecting to user's home page.
@@ -129,6 +133,8 @@ if(isset($_POST['submit_btn']))
 						}
 						else
 						{	
+							$_SESSION['first_name'] = $navigate['first_name'];
+							$_SESSION['type']= $navigate['type'];
 						//Navigating to admin page
 						header('location: admin-entrance/useradmin/show-user.php');
 						}
@@ -190,7 +196,7 @@ if(isset($_POST['submit_btn']))
                 </div> 				
 				<div class="check">
                      <!--<label for="con-pswd"><b>Confirm Password</b></label><br /> -->
-                    <input type="checkbox" name="terms" required> I agree to the <a href="admin-entrance/Terms&Conditions/conditions.php">Terms & Conditions</a></input>
+                    <input type="checkbox" name="terms" required> I agree to the <a href="admin-entrance/Terms&Conditions/show-conditions.php">Terms & Conditions</a></input>
                 </div>
                 <button class="signupBtn" type="submit" name="submit_btn">Sign Up</button>
             </div>

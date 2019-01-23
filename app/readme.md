@@ -1,3 +1,3 @@
-1.adminentrance for admin page
-2.database name:crud
-I add "address" field in table "users";
+1. admin-entrance for admin page
+2. User-entrance for home page
+3. database name:crud

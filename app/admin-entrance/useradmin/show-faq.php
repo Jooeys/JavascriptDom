@@ -1,3 +1,6 @@
+<?php
+include('server.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +35,7 @@
 				<?php endif ?>
 				<?php
 
-					session_start();
+//					session_start();
 
 					$db = mysqli_connect("localhost","root","","crud");// or die('unable to connect');
 
@@ -49,6 +52,9 @@
 							// echo "<div class='tnc'><p class='display'>$id</p></div>";
 							echo "<div class='tnc'><p class='display'>$faq_text</p></div>";
 							
+
+							
+							
 						}
 					}
 					else
@@ -57,9 +63,17 @@
 					}
 				?>
 			</div>
-		</div>	
+		</div>
+
+        <?php $results = mysqli_query($db, "SELECT * FROM faq order by id desc"); ?>
+        <?php $row = mysqli_fetch_array($results) ?>
+        <div style="width: 100%; height: 100px;">
+<!--        <button class="button"><a href="server.php?Delete_last_btn=--><?php //echo $row['id']; ?><!--" class="del_btn">Delete Last Edition</a></button>-->
+        <button class="button"><a href="server.php?delete_post=<?php echo $row['id']; ?>" class="del_btn">Delete ALL</a></button>
+        </div>
+        <?php ?>
     </div>
-   
+  
 
 
 </body>

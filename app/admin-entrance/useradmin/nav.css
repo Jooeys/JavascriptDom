@@ -3,6 +3,15 @@
     margin: 0px;
     padding: 0px;
 }
+.logout_btn{
+    text-decoration: none;
+    padding: 2px 5px;
+    margin: 10px 5px;
+    background: goldenrod;
+    color: black;
+    font-size: large;
+    border-radius: 3px;
+}
 .top-nav{
     width: 50%;
     float: left;

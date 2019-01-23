@@ -54,19 +54,12 @@ if(isset($_POST['frgt_btn']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="login_styles_si.css">
-    <style>
-    </style>
-    <script>
-    </script>
 </head>
 
 <body>
-
+    <div class="header">DIMOISEP IOT Management System</div>
+    <div class="content">
     <div class="bg-image"></div>
-    <!-- <div class="header">
-            <img src="Bigtree_logo.JPG" alt="Bigtree_logo" width="100" height="100"><h1> BIGTREE</h1>
-        </div> -->
-
     <img src="imgs/final.JPG" alt="Bigtree_logo">
 
     <div class="login">
@@ -78,68 +71,20 @@ if(isset($_POST['frgt_btn']))
 					<p>Enter your Email ID</p>
 					<input type="text" placeholder="Email" name="email" required>
                 </div>
-                <!--<div class="input-field">
-                     <label for="psw"><b>Password</b></label><br /> 
-                    <input type="password" placeholder="New Password" name="pswd" required>
-                </div>
-				    <div class="input-field">
-                     <label for="psw"><b>Password</b></label><br /> 
-                    <input type="password" placeholder="Confirm New Password" name="conpswd" required>
-                </div>-->
-                <!--<div style="margin-top: 10px; margin-left: 8%">
-                    <a href="">Forgot Password?</a>
-                     <input type="checkbox" name="remember">
-                    <label for="remember">Remember me</label> -->
-                    <!--                 
-                    <input type="checkbox" checked="checked" style="width: 5%" name="remember">
-                    <label  style="position: absolute; bottom: 18%;"for="remember">Remember me</label> 
-                </div>-->
+              
             </div>
             <button class="signInBtn" type="submit" name="frgt_btn">Confirm</button>
 			
 			<div style="margin-top: 20px;"> Login In? <button class="clickBtn" style="width:auto;" id="signupBtn"><a href="index.php">Click here</a></button>
                 <!-- <button id="signupBtn" type="submit">Sign Up</button> -->
             </div>
-            <!--<div style="margin-top: 20px;"> Haven't registered yet? <button class="clickBtn" onclick="document.getElementById('signupModal').style.display='block'"
-                    style="width:auto;" href="" id="signupBtn">Click
-                    here</button>
-                <button id="signupBtn" type="submit">Sign Up</button> 
-            </div>-->
+           
         </form>
     </div>
-
-
-    <!-- <script>
-            // Get the modal
-            var modal = document.getElementById('signupModal');
-
-            // Get the button that opens the modal
-            var btn = document.getElementById("signupBtn");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // modal.style.display="none";
-
-
-            // When the user clicks the button, open the modal 
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-
-            // // When the user clicks anywhere outside of the modal, close it
-            // window.onclick = function (event) {
-            //     if (event.target == modal) {
-            //         modal.style.display = "none";
-            //     }
-            // }
-        </script> -->
-
+</div>
+<div class="footer">
+    <h5 style="text-align: center; font-family: Hei; ">User Admin - 2019 © DOMISEP all rights reserved! Powered By BIGTREE</h5>
+</div>
 </body>
 
 </html>

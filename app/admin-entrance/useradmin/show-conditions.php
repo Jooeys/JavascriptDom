@@ -43,8 +43,16 @@
 					}
 				?>
 			</div>
-		</div>	
+		</div>
+        <?php $results = mysqli_query($db, "SELECT * FROM terms order by id desc"); ?>
+        <?php $row = mysqli_fetch_array($results) ?>
+        <div style="width: 100%; height: 100px;">
+<!--            <button class="button"><a href="server.php?Delete_last_btn=--><?php //echo $row['id']; ?><!--" class="del_btn">Delete Last Edition</a></button>-->
+            <button class="button"><a href="server.php?delete_terms=<?php echo $row['id']; ?>" class="del_btn">Delete ALL</a></button>
+        </div>
+        <?php ?>
     </div>
+
    
 
 

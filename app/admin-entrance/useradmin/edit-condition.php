@@ -1,26 +1,8 @@
-<!-- <?php
-include('server.php');
-if (isset($_GET['edit'])) {
-    $id = $_GET['edit'];
-    $update = true;
-    $record = mysqli_query($db, "SELECT * FROM info WHERE id=$id");
-
-    if (count($record == 1)) {
-        $n = mysqli_fetch_array($record);
-        $firstname = $n['firstname'];
-        $lastname = $n['lastname'];
-        $email = $n['email'];
-        $password = $n['password'];
-        $address = $n['address'];
-        // $usertype = $n['usertype'];
-    }
-
-}
-?> -->
+<?php include('server.php'); ?>
 <?php 
     $terms_text = "";
     $update_terms = false;
-    $save_terms = false;
+    $save_terms = true;
 ?>
  <?php error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);?>
 
@@ -39,8 +21,7 @@ if (isset($_GET['edit'])) {
 
     <!-- ckeditor -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.8.0/ckeditor.js"></script>
-    <!-- Styling for public area -->
-    <link rel="stylesheet" href="../static/css/admin_styling.css">
+
 </head>
 <body>
 <div class="header">
@@ -50,27 +31,24 @@ if (isset($_GET['edit'])) {
         <span style="float:left;color:white;padding:20px 20px;position:relative;font-family: Arial;font-size: 24px;margin-top: 10px;">ADMIN-DOMISEP</span>
     </div>
     <!-- end: Header Menu Team logo -->
-    <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
+    <ul class="top-nav" style="width: 75%;float: left;display: inline-block;">
         <?php $row = mysqli_fetch_array($results) ?>
         <li><a href="show-user.php">User Management</a></li>
         <li><a href="create_admin.php">Add Admin</a></li>
-        <li><a href="edit-myprofile.php" >Edit Profile</a></li>
         <li><a href="edit-faq.php" >Edit FAQ</a></li>
         <li><a href="edit-condition.php">Privacy&Terms</a></li>
-        
-        <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
-        <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
-        <div style="margin: 20px 20px;">
-            <?php  if (isset($_SESSION['user'])) : ?>
-                <strong style="font-size: x-large;"><?php echo $_SESSION['user']['username']; ?></strong>
+        <li><img src="../images/boss.png" style="margin:0px 0px 0px 280px;"></li>
+        <div style="margin: 2px 2px;">
+            <?php  if (isset($_SESSION['first_name'])) : ?>
+                <strong style="font-size: x-large;"><?php echo $_SESSION['first_name']; ?></strong>
                 <small>
-                    <i  style="color: #888;margin-right: 20px;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                    
-                    <a href="../../index.php?logout='1'" style="color: red;font-size: x-large;">logout</a>
+                    <i  style="color: #888;margin-right: 1px;">(<?php echo ucfirst($_SESSION['type']); ?>)</i>
+                    <button class="logout_btn"><a href="../../index.php?logout='1'" style="text-decoration: none;">logout</a></button>
                  
                 </small>
 
             <?php endif ?>
+        </div>
         </div>
         <?php ?>
     </ul>
@@ -91,8 +69,11 @@ if (isset($_GET['edit'])) {
         <!-- Middle form - to create and edit FAQ  -->
         <div class="action create-post-div">
             <h1 class="page-title" style="text-align: center;">Edit Privacy & Terms</h1>
+            <?php $results = mysqli_query($db, "SELECT * FROM terms order by id desc"); ?>
+            <?php $row = mysqli_fetch_array($results)?>
+
             <form method="post" enctype="multipart/form-data" action="server.php" style="border: 1px solid green;" >
-                <textarea name="terms_text" id="body" cols="60" rows="30"><?php echo $terms_text; ?></textarea>
+                <textarea name="terms_text" id="body" cols="60" rows="30"><?php echo $row['terms_text']; ?></textarea>
             
                 <div class="input-group">
 
@@ -106,6 +87,7 @@ if (isset($_GET['edit'])) {
             </form>
         </div>
         <!-- // Middle form - to create and edit FAQ -->
+
     </div>
 <div class="footer">
     <h5 style="text-align: center; font-family: Hei; ">User Admin - 2019 © DOMISEP all rights reserved!</h5>

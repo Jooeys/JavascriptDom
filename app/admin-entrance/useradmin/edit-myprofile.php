@@ -39,23 +39,19 @@ include('server.php');
         <span style="float:left;color:white;padding:20px 20px;position:relative;font-family: Arial;font-size: 24px;margin-top: 10px;">ADMIN-DOMISEP</span>
     </div>
     <!-- end: Header Menu Team logo -->
-    <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
+    <ul class="top-nav" style="width: 75%;float: left;display: inline-block;">
         <?php $row = mysqli_fetch_array($results) ?>
         <li><a href="show-user.php">User Management</a></li>
         <li><a href="create_admin.php">Add Admin</a></li>
-        <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit Profile</a></li>
         <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
         <li><a href="edit-condition.php">Privacy&Terms</a></li>
-        
-        <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
-        <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
-       <div style="margin: 20px 20px;">
-            <?php  if (isset($_SESSION['user'])) : ?>
-                <strong style="font-size: x-large;"><?php echo $_SESSION['user']['username']; ?></strong>
+        <li><img src="../images/boss.png" style="margin:0px 0px 0px 280px;"></li>
+       <div style="margin: 2px 2px;">
+            <?php  if (isset($_SESSION['first_name'])) : ?>
+                <strong style="font-size: x-large;"><?php echo $_SESSION['first_name']; ?></strong>
                 <small>
-                    <i  style="color: #888;margin-right: 20px;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                    
-                    <a href="../../index.php?logout='1'" style="color: red;font-size: x-large;">logout</a>
+                    <i  style="color: #888;margin-right: 1px;">(<?php echo ucfirst($_SESSION['type']); ?>)</i>
+                    <button class="logout_btn"><a href="../../index.php?logout='1'" style="text-decoration: none;">logout</a></button>
                  
                 </small>
 

@@ -32,6 +32,9 @@ include('server.php');
 
 	<link rel="stylesheet" type="text/css" href="../useradmin/searchbox/style.css">
 	<script type="text/javascript" src="../useradmin/searchbox/function.js"></script>
+
+	<!-- pagination -->
+	<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	
 </head>
 <body>
@@ -42,23 +45,20 @@ include('server.php');
         <span style="float:left;color:white;padding:20px 20px;position:relative;font-family: Arial;font-size: 24px;margin-top: 10px;">ADMIN-DOMISEP</span>
     </div>
     <!-- end: Header Menu Team logo -->
-    <ul class="top-nav" style="width: 75%;float: left;display: inline-flex;">
+    <ul class="top-nav" style="width: 75%;float: left;display: inline-block;">
         <?php $row = mysqli_fetch_array($results) ?>
         <li><a href="show-user.php">User Management</a></li>
-        <li><a href="myprofile.php">Add Admin</a></li>
-        <li><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" >Edit Profile</a></li>
+        <li><a href="create_admin.php">Add Admin</a></li>
         <li><a href="edit-faq.php?edit=<?php echo $row['id']; ?>" >Edit FAQ</a></li>
-        <li><a href="Privacy&Terms.php">Privacy&Terms</a></li>
-        <li><a href="change_password.php?edit=<?php echo $row['id']; ?>" >Change Password</a></li>
-        <li><img src="../images/boss.png" style="margin:0px 10px 0px 100px;"></li>
-        <div>
-            <?php  if (isset($_SESSION['user'])) : ?>
-                <strong><?php echo $_SESSION['user']['username']; ?></strong>
+        <li><a href="edit-condition.php">Privacy&Terms</a></li>
+        <li><img src="../images/boss.png" style="margin:0px 10px 0px 500px;"></li>
+        <div style="margin: 2px 2px;">
+            <?php  if (isset($_SESSION['first_name'])) : ?>
+                <strong style="font-size: x-large;"><?php echo $_SESSION['first_name']; ?></strong>
                 <small>
-                    <i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-                    <br>
-                    <a href="../admin/home.php?logout='1'" style="color: red;">logout</a>&nbsp;&nbsp;
-                    <a href="../admin/create_admin.php"> login</a>
+                    <i  style="color: #888;margin-right: 1px;">(<?php echo ucfirst($_SESSION['type']); ?>)</i>&nbsp;
+                    <button class="logout_btn"><a href="../../index.php?logout='1'" style="text-decoration: none;">logout</a></button>
+                 
                 </small>
 
             <?php endif ?>
@@ -87,7 +87,7 @@ include('server.php');
 
 <!--Search box for admin users-->
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search first_name..."style="margin-top: 20px;margin-bottom: auto;">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search first_name..."style="margin:20px 130px;margin-bottom: auto;">
 <!-- when user manipulate database show messages here -->
 	<?php if (isset($_SESSION['message'])): ?>
 		<div class="msg">
@@ -99,52 +99,55 @@ include('server.php');
 	<?php endif ?>
 
 <!--start: pagination script -->
+<?php 
+require 'pager.php';
+$mysqli = new mysqli('localhost','root','','crud') or die('Connection Error');
+$listRow = 4;	//每页展示数量
+$sql = 'SELECT id FROM users;';
+$data = $mysqli->query($sql);
+$total = $data->num_rows;		//获取记录总数
 
+$Pager = new Pager($total,$listRow,0,['query'=>['name'=>'admin'],'fragment'=>'top']);	//实例化分页类
+$sql = "SELECT * FROM users LIMIT ".($Pager->getCurrentPage()-1) * $listRow ."," . $listRow;	//获取定量的数据条数
+$data = $mysqli->query($sql);
+ ?>
 
-<!--end: pagination script -->
-
-<?php $results = mysqli_query($db, "SELECT * FROM users order by id desc"); ?>
-
-<table id="myTable"> 
-    <tr class="header">   
-      <th>ID</th>
-      <th>first_name</th>
-      <th>last_name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <!-- <th>Address</th> -->
-      <th>Type</th>
-      <th colspan="5">Action</th>
-    </tr>
-
-	<?php while ($row = mysqli_fetch_array($results)) { ?>
-	<tr>
-		<td><?php echo $row['id']; ?></td>
-		<td><?php echo $row['first_name']; ?></td>
-		<td><?php echo $row['last_name']; ?></td>
-		<td><?php echo $row['email']; ?></td>
-		<td><?php echo $row['password']; ?></td> 
-		<!-- <td><?php echo $row['address']; ?></td> -->
-		<td><?php echo $row['type']; ?></td>
-		<td><a href="edit-myprofile.php?edit=<?php echo $row['id']; ?>" class="edit_btn">Edit</a></td>
-		<td><a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn">Delete</a></td>
-	</tr>
-<?php } ?>
-
-
-<!--start: pagination -->
-	
-    <tr>
-   		<td colspan="10"><?php echo $row['page'];?>
-		    <a href="page.php?page=1">首页</a>
-		    <a href="page.php?page=' . ($page - 1) . '">上一页</a>
-		    <a href="page.php?page=' . ($page + 1) . '">下一页</a>
-		    <a href="page.php?page=' . $total . '">尾页</a>
-		    当前是第 ' . $page . '页  共' . $total . '页
-    	</td>
-    </tr>
+	<table class="myTable" style="width: 80%;height: 200px;">
+		<caption>Users Table</caption>
+		<thead>
+			<tr class="header">   
+				<th>ID</th>
+		        <th>first_name</th>
+		        <th>last_name</th>
+		        <th>Email</th>
+		        <th>Type</th>
+		        <th colspan="5">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php 
+				while ($row = mysqli_fetch_object($data)) {
+			 ?>
+			<tr>
+				<td><?php echo $row->id ?></td>
+				<td><?php echo $row->first_name ?></td>
+				<td><?php echo $row->last_name ?></td>
+				<td><?php echo $row->email ?></td>
+				<td><?php echo $row->type ?></td>
+				<td><a href="edit-admin-profile.php?edit=<?php echo $row->id ?>" class="edit_btn">Edit</a></td>
+				<td><a href="server.php?del=<?php echo $row->id ?>" class="del_btn">Delete</a></td>
+			</tr>
+			<?php 
+				}
+			 ?>
+		</tbody>
+	</table>
+	<div class="page">
+	<hr>
+		<?php echo $Pager->render() ?>
+	</div>
+</div>
 <!--end: pagination  -->
-</table>
 
  	</div>
     <div class="footer">
